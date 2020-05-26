@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni\migrations
+ * @package    open20\amos\comuni\migrations
  * @category   CategoryName
  */
 
-use lispa\amos\core\migration\AmosMigrationPermissions;
+use open20\amos\core\migration\AmosMigrationPermissions;
 use yii\helpers\ArrayHelper;
 use yii\rbac\Permission;
 
@@ -112,19 +112,19 @@ class m150726_193742_add_comuni_permissions_roles extends AmosMigrationPermissio
 //    {
 //        return [
 //            [
-//                'name' => lispa\amos\comuni\widgets\icons\WidgetIconAmmComuni::className(),
+//                'name' => open20\amos\comuni\widgets\icons\WidgetIconAmmComuni::className(),
 //                'type' => Permission::TYPE_PERMISSION,
 //                'description' => 'Permesso per il widget WidgetIconAmmComuni',
 //                'parent' => ['AMMINISTRATORE_COMUNI_ISTAT']
 //            ],
 //            [
-//                'name' => lispa\amos\comuni\widgets\icons\WidgetIconComuni::className(),
+//                'name' => open20\amos\comuni\widgets\icons\WidgetIconComuni::className(),
 //                'type' => Permission::TYPE_PERMISSION,
 //                'description' => 'Permesso per il widget WidgetIconComuni',
 //                'parent' => ['AMMINISTRATORE_COMUNI_ISTAT']
 //            ],
 //            [
-//                'name' => lispa\amos\comuni\widgets\icons\WidgetIconProvince::className(),
+//                'name' => open20\amos\comuni\widgets\icons\WidgetIconProvince::className(),
 //                'type' => Permission::TYPE_PERMISSION,
 //                'description' => 'Permesso per il widget WidgetIconProvince',
 //                'parent' => ['AMMINISTRATORE_COMUNI_ISTAT']

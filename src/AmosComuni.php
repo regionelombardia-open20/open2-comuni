@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni;
+namespace open20\amos\comuni;
 
-use lispa\amos\core\module\AmosModule;
-use lispa\amos\comuni\widgets\icons\WidgetIconAmmComuni;
-use lispa\amos\comuni\widgets\icons\WidgetIconComuni;
-use lispa\amos\comuni\widgets\icons\WidgetIconProvince;
+use open20\amos\core\module\AmosModule;
+use open20\amos\comuni\widgets\icons\WidgetIconAmmComuni;
+use open20\amos\comuni\widgets\icons\WidgetIconComuni;
+use open20\amos\comuni\widgets\icons\WidgetIconProvince;
 
 /**
  * AmosComuni module definition class
@@ -24,7 +24,7 @@ class AmosComuni extends AmosModule {
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'lispa\amos\comuni\controllers';
+    public $controllerNamespace = 'open20\amos\comuni\controllers';
     public $newFileMode = 0666;
     public $newDirMode = 0777;
     public $name = 'comuni';

@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models\base;
+namespace open20\amos\comuni\models\base;
 
 use Yii;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * This is the base-model class for table "istat_province".
@@ -25,12 +25,12 @@ use lispa\amos\comuni\AmosComuni;
  * @property integer $istat_citta_metropolitane_id
  * @property integer $istat_regioni_id
  *
- * @property \lispa\amos\comuni\models\IstatComuni[] $istatComunis
- * @property \lispa\amos\comuni\models\IstatCittaMetropolitane $istatCittaMetropolitane
- * @property \lispa\amos\comuni\models\IstatRegioni $istatRegioni
- * @property \lispa\amos\comuni\models\IstatUnioneDeiComuni[] $istatUnioneDeiComunis
+ * @property \open20\amos\comuni\models\IstatComuni[] $istatComunis
+ * @property \open20\amos\comuni\models\IstatCittaMetropolitane $istatCittaMetropolitane
+ * @property \open20\amos\comuni\models\IstatRegioni $istatRegioni
+ * @property \open20\amos\comuni\models\IstatUnioneDeiComuni[] $istatUnioneDeiComunis
  */
-class IstatProvince extends \lispa\amos\core\record\Record
+class IstatProvince extends \open20\amos\core\record\Record
 {
 
 
@@ -77,7 +77,7 @@ class IstatProvince extends \lispa\amos\core\record\Record
      */
     public function getIstatComunis()
     {
-        return $this->hasMany(\lispa\amos\comuni\models\IstatComuni::className(), ['istat_province_id' => 'id'])->inverseOf('istatProvince');
+        return $this->hasMany(\open20\amos\comuni\models\IstatComuni::className(), ['istat_province_id' => 'id'])->inverseOf('istatProvince');
     }
 
     /**
@@ -85,7 +85,7 @@ class IstatProvince extends \lispa\amos\core\record\Record
      */
     public function getIstatCittaMetropolitane()
     {
-        return $this->hasOne(\lispa\amos\comuni\models\IstatCittaMetropolitane::className(), ['id' => 'istat_citta_metropolitane_id'])->inverseOf('istatProvinces');
+        return $this->hasOne(\open20\amos\comuni\models\IstatCittaMetropolitane::className(), ['id' => 'istat_citta_metropolitane_id'])->inverseOf('istatProvinces');
     }
 
     /**
@@ -93,7 +93,7 @@ class IstatProvince extends \lispa\amos\core\record\Record
      */
     public function getIstatRegioni()
     {
-        return $this->hasOne(\lispa\amos\comuni\models\IstatRegioni::className(), ['id' => 'istat_regioni_id'])->inverseOf('istatProvinces');
+        return $this->hasOne(\open20\amos\comuni\models\IstatRegioni::className(), ['id' => 'istat_regioni_id'])->inverseOf('istatProvinces');
     }
 
     /**
@@ -101,6 +101,6 @@ class IstatProvince extends \lispa\amos\core\record\Record
      */
     public function getIstatUnioneDeiComunis()
     {
-        return $this->hasMany(\lispa\amos\comuni\models\IstatUnioneDeiComuni::className(), ['istat_province_id' => 'id'])->inverseOf('istatProvince');
+        return $this->hasMany(\open20\amos\comuni\models\IstatUnioneDeiComuni::className(), ['istat_province_id' => 'id'])->inverseOf('istatProvince');
     }
 }

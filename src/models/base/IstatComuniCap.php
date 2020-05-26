@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models\base;
+namespace open20\amos\comuni\models\base;
 
 use Yii;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * This is the base-model class for table "istat_comuni_cap".
@@ -25,7 +25,7 @@ use lispa\amos\comuni\AmosComuni;
     * @property \app\models\IstatComuni $comune
     */
 
-    class IstatComuniCap extends \lispa\amos\core\record\Record
+    class IstatComuniCap extends \open20\amos\core\record\Record
     {
 
 
@@ -68,7 +68,7 @@ use lispa\amos\comuni\AmosComuni;
         */
         public function getComune()
         {
-            return $this->hasOne(\lispa\amos\comuni\models\IstatComuni::className(), ['id' => 'comune_id']);
+            return $this->hasOne(\open20\amos\comuni\models\IstatComuni::className(), ['id' => 'comune_id']);
         }
 
 }

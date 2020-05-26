@@ -1,5 +1,14 @@
 <?php
-use lispa\amos\core\migration\AmosMigrationPermissions;
+
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+use open20\amos\core\migration\AmosMigrationPermissions;
 use yii\rbac\Permission;
 
 
@@ -17,7 +26,7 @@ class m171031_160003_add_auth_item_importatore_codici_catastali extends AmosMigr
 
         return [
             [
-                'name' =>  \lispa\amos\comuni\widgets\icons\WidgetIconImportatoreCodiciCatastali::className(),
+                'name' =>  \open20\amos\comuni\widgets\icons\WidgetIconImportatoreCodiciCatastali::className(),
                 'type' => Permission::TYPE_PERMISSION,
                 'description' => $prefixStr . 'WidgetIconImportatoreCodiciCatastali',
                 'ruleName' => null,

@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\controllers\api;
+namespace open20\amos\comuni\controllers\api;
 
 /**
  * This is the class for REST controller "IstatUnioneDeiComuniController".
@@ -20,5 +20,5 @@ use yii\helpers\ArrayHelper;
 
 class IstatUnioneDeiComuniController extends \yii\rest\ActiveController
 {
-    public $modelClass = 'lispa\amos\comuni\models\IstatUnioneDeiComuni';
+    public $modelClass = 'open20\amos\comuni\models\IstatUnioneDeiComuni';
 }

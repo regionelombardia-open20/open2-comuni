@@ -1,19 +1,28 @@
 <?php
 
-use lispa\amos\core\helpers\Html;
-use lispa\amos\core\forms\ActiveForm;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
+use open20\amos\core\helpers\Html;
+use open20\amos\core\forms\ActiveForm;
 use kartik\builder\Form;
 use kartik\datecontrol\DateControl;
-use lispa\amos\core\forms\Tabs;
-use lispa\amos\core\forms\CloseSaveButtonWidget;
+use open20\amos\core\forms\Tabs;
+use open20\amos\core\forms\CloseSaveButtonWidget;
 use yii\helpers\Url;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * @var yii\web\View $this
- * @var lispa\amos\comuni\models\IstatCittaMetropolitane $model
+ * @var open20\amos\comuni\models\IstatCittaMetropolitane $model
  * @var yii\widgets\ActiveForm $form
  */
 

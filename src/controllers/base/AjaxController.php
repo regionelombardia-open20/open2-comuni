@@ -1,24 +1,24 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\controllers\base;
+namespace open20\amos\comuni\controllers\base;
 
 use Yii;
 use yii\db\Query;
 use yii\helpers\Json;
 use yii\web\Controller;
-use lispa\amos\comuni\models\IstatComuni;
-use lispa\amos\comuni\models\IstatComuniCap;
-use lispa\amos\comuni\models\IstatProvince;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\models\IstatComuni;
+use open20\amos\comuni\models\IstatComuniCap;
+use open20\amos\comuni\models\IstatProvince;
+use open20\amos\comuni\AmosComuni;
 
 class AjaxController extends Controller
 {

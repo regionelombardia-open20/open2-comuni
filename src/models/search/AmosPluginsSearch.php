@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
@@ -17,7 +17,7 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * AmosRapidEntitiesSearch represents the model behind the search form about `lispa\amos\rapid\models\AmosRapidEntities`.
+ * AmosRapidEntitiesSearch represents the model behind the search form about `open20\amos\rapid\models\AmosRapidEntities`.
  */
 class AmosPluginsSearch extends AmosPlugins
 {

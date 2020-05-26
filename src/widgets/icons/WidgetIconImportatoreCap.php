@@ -1,11 +1,20 @@
 <?php
 
-namespace lispa\amos\comuni\widgets\icons;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
 
-use lispa\amos\core\widget\WidgetIcon;
+namespace open20\amos\comuni\widgets\icons;
+
+use open20\amos\core\widget\WidgetIcon;
 use Yii;
 use yii\helpers\ArrayHelper;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 class WidgetIconImportatoreCap extends WidgetIcon
 {

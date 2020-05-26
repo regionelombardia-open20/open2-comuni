@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-use lispa\amos\core\migration\AmosMigrationWidgets;
-use lispa\amos\dashboard\models\AmosWidgets;
+use open20\amos\core\migration\AmosMigrationWidgets;
+use open20\amos\dashboard\models\AmosWidgets;
 
 class m160926_193743_add_comuni_widget extends AmosMigrationWidgets
 {
@@ -23,25 +23,25 @@ class m160926_193743_add_comuni_widget extends AmosMigrationWidgets
     {
         $this->widgets = [
             [
-                'classname' => \lispa\amos\comuni\widgets\icons\WidgetIconAmmComuni::className(),
+                'classname' => \open20\amos\comuni\widgets\icons\WidgetIconAmmComuni::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_DISABLED,
                 'child_of' => NULL
             ],
             [
-                'classname' => \lispa\amos\comuni\widgets\icons\WidgetIconComuni::className(),
+                'classname' => \open20\amos\comuni\widgets\icons\WidgetIconComuni::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_DISABLED,
-                'child_of' => \lispa\amos\comuni\widgets\icons\WidgetIconAmmComuni::className()
+                'child_of' => \open20\amos\comuni\widgets\icons\WidgetIconAmmComuni::className()
             ],
             [
-                'classname' => \lispa\amos\comuni\widgets\icons\WidgetIconProvince::className(),
+                'classname' => \open20\amos\comuni\widgets\icons\WidgetIconProvince::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_DISABLED,
-                'child_of' => \lispa\amos\comuni\widgets\icons\WidgetIconAmmComuni::className(),
+                'child_of' => \open20\amos\comuni\widgets\icons\WidgetIconAmmComuni::className(),
             ],
         ];
     }

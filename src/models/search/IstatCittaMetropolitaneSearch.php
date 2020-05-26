@@ -1,23 +1,23 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models\search;
+namespace open20\amos\comuni\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use lispa\amos\comuni\models\IstatCittaMetropolitane;
+use open20\amos\comuni\models\IstatCittaMetropolitane;
 
 /**
- * IstatCittaMetropolitaneSearch represents the model behind the search form about `lispa\amos\comuni\models\IstatCittaMetropolitane`.
+ * IstatCittaMetropolitaneSearch represents the model behind the search form about `open20\amos\comuni\models\IstatCittaMetropolitane`.
  */
 class IstatCittaMetropolitaneSearch extends IstatCittaMetropolitane
 {

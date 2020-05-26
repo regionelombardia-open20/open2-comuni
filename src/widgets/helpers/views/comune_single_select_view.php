@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni\widgets\helpers\views
+ * @package    open20\amos\comuni\widgets\helpers\views
  * @category   CategoryName
  */
 
-use lispa\amos\comuni\AmosComuni;
-use lispa\amos\comuni\models\IstatComuni;
-use lispa\amos\core\forms\editors\Select;
+use open20\amos\comuni\AmosComuni;
+use open20\amos\comuni\models\IstatComuni;
+use open20\amos\core\forms\editors\Select;
 use yii\helpers\ArrayHelper;
 
 //id del campo: se specificato nelle option uso quello, altrimenti sarà nel formato 'campo_db-id'

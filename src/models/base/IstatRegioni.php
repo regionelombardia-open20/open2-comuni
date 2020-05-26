@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models\base;
+namespace open20\amos\comuni\models\base;
 
 use Yii;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * This is the base-model class for table "istat_regioni".
@@ -21,11 +21,11 @@ use lispa\amos\comuni\AmosComuni;
  * @property string $nome
  * @property integer $istat_nazioni_id
  *
- * @property \lispa\amos\comuni\models\IstatComuni[] $istatComunis
- * @property \lispa\amos\comuni\models\IstatProvince[] $istatProvinces
- * @property \lispa\amos\comuni\models\IstatNazioni $istatNazioni
+ * @property \open20\amos\comuni\models\IstatComuni[] $istatComunis
+ * @property \open20\amos\comuni\models\IstatProvince[] $istatProvinces
+ * @property \open20\amos\comuni\models\IstatNazioni $istatNazioni
  */
-class IstatRegioni extends \lispa\amos\core\record\Record
+class IstatRegioni extends \open20\amos\core\record\Record
 {
 
 
@@ -67,7 +67,7 @@ class IstatRegioni extends \lispa\amos\core\record\Record
      */
     public function getIstatComunis()
     {
-        return $this->hasMany(\lispa\amos\comuni\models\IstatComuni::className(), ['istat_regioni_id' => 'id'])->inverseOf('istatRegioni');
+        return $this->hasMany(\open20\amos\comuni\models\IstatComuni::className(), ['istat_regioni_id' => 'id'])->inverseOf('istatRegioni');
     }
 
     /**
@@ -75,7 +75,7 @@ class IstatRegioni extends \lispa\amos\core\record\Record
      */
     public function getIstatProvinces()
     {
-        return $this->hasMany(\lispa\amos\comuni\models\IstatProvince::className(), ['istat_regioni_id' => 'id'])->inverseOf('istatRegioni');
+        return $this->hasMany(\open20\amos\comuni\models\IstatProvince::className(), ['istat_regioni_id' => 'id'])->inverseOf('istatRegioni');
     }
 
     /**
@@ -83,6 +83,6 @@ class IstatRegioni extends \lispa\amos\core\record\Record
      */
     public function getIstatNazioni()
     {
-        return $this->hasOne(\lispa\amos\comuni\models\IstatNazioni::className(), ['id' => 'istat_nazioni_id'])->inverseOf('istatRegionis');
+        return $this->hasOne(\open20\amos\comuni\models\IstatNazioni::className(), ['id' => 'istat_nazioni_id'])->inverseOf('istatRegionis');
     }
 }

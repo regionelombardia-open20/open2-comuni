@@ -1,12 +1,21 @@
 <div class="<?= isset($capConfig['class']) ? $capConfig['class'] : 'col-md-' . $colMdRow; ?>">
 <?php
+
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
     //id del campo: se specificato nelle option uso quello, altrimenti sarà nel formato 'campo_db-id'
     $id = isset($capConfig['options']['id']) ? $capConfig['options']['id'] : $capConfig['attribute'].'-id';
     $id_comune = isset($comuneConfig['options']['id']) ? $comuneConfig['options']['id'] : $comuneConfig['attribute'].'-id';
 
     echo $form->field($model, $capConfig['attribute'])->widget(\kartik\depdrop\DepDrop::classname(), [
         'type' => \kartik\depdrop\DepDrop::TYPE_SELECT2,
-        'data' => \yii\helpers\ArrayHelper::map(\lispa\amos\comuni\models\IstatComuniCap::find()->andWhere(['comune_id' => $model->$comuneConfig['attribute']])->orderBy('cap')->asArray()->all(), 'id', 'cap'),
+        'data' => \yii\helpers\ArrayHelper::map(\open20\amos\comuni\models\IstatComuniCap::find()->andWhere(['comune_id' => $model->$comuneConfig['attribute']])->orderBy('cap')->asArray()->all(), 'id', 'cap'),
         'options' => array_merge(
             [
                 'id' => $id,

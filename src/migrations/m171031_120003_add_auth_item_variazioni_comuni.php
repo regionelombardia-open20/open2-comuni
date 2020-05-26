@@ -1,5 +1,14 @@
 <?php
-use lispa\amos\core\migration\AmosMigrationPermissions;
+
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+use open20\amos\core\migration\AmosMigrationPermissions;
 use yii\rbac\Permission;
 
 
@@ -17,7 +26,7 @@ class m171031_120003_add_auth_item_variazioni_comuni extends AmosMigrationPermis
 
         return [
             [
-                'name' =>  \lispa\amos\comuni\widgets\icons\WidgetIconVariazioniComuni::className(),
+                'name' =>  \open20\amos\comuni\widgets\icons\WidgetIconVariazioniComuni::className(),
                 'type' => Permission::TYPE_PERMISSION,
                 'description' => $prefixStr . 'WidgetIconImportatore',
                 'ruleName' => null,

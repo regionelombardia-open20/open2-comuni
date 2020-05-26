@@ -1,6 +1,15 @@
 <?php
-use lispa\amos\core\migration\AmosMigrationWidgets;
-use lispa\amos\dashboard\models\AmosWidgets;
+
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+use open20\amos\core\migration\AmosMigrationWidgets;
+use open20\amos\dashboard\models\AmosWidgets;
 
 
 /**
@@ -16,12 +25,12 @@ class m171031_160002_add_amos_widget_importatore_codici_catastali extends AmosMi
     {
         $this->widgets = [
             [
-                'classname' => \lispa\amos\comuni\widgets\icons\WidgetIconImportatoreCodiciCatastali::className(),
+                'classname' => \open20\amos\comuni\widgets\icons\WidgetIconImportatoreCodiciCatastali::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 //the widget is visible ONLY for third level dashboard 'comuni'
                 'dashboard_visible' => 0,
-                'child_of' => \lispa\amos\comuni\widgets\icons\WidgetIconImportatoreCodiciCatastali::className(),
+                'child_of' => \open20\amos\comuni\widgets\icons\WidgetIconImportatoreCodiciCatastali::className(),
             ]
         ];
     }

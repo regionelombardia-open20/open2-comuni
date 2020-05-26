@@ -1,28 +1,28 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comments\assets
+ * @package    open20\amos\comments\assets
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\assets;
+namespace open20\amos\comuni\assets;
 
 use yii\web\AssetBundle;
 
 /**
  * Class CommentsAsset
- * @package lispa\amos\comuni\assets
+ * @package open20\amos\comuni\assets
  */
 class ComuniAsset extends AssetBundle
 {
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@vendor/lispa/amos-comuni/src/assets/web';
+    public $sourcePath = '@vendor/open20/amos-comuni/src/assets/web';
 
     /**
      * @inheritdoc

@@ -1,9 +1,18 @@
 <?php
-use lispa\amos\core\helpers\Html;
-use lispa\amos\core\forms\ActiveForm;
+
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+use open20\amos\core\helpers\Html;
+use open20\amos\core\forms\ActiveForm;
 use kartik\builder\Form;
-use lispa\amos\core\forms\Tabs;
-use lispa\amos\core\forms\CloseSaveButtonWidget;
+use open20\amos\core\forms\Tabs;
+use open20\amos\core\forms\CloseSaveButtonWidget;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 
@@ -48,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 if( empty($dati['update'])): ?>
     <div class="row"><div class="col-xs-4">Nessun comune da variare in sospeso</div></div>
-    <?
+    <?php
 else:
 
     foreach ( $dati['update'] as $k => $array_data ): ?>

@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models\base;
+namespace open20\amos\comuni\models\base;
 
 use Yii;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * This is the base-model class for table "istat_unione_dei_comuni".
@@ -22,10 +22,10 @@ use lispa\amos\comuni\AmosComuni;
  * @property string $sito
  * @property integer $istat_province_id
  *
- * @property \lispa\amos\comuni\models\IstatComuni[] $istatComunis
- * @property \lispa\amos\comuni\models\IstatProvince $istatProvince
+ * @property \open20\amos\comuni\models\IstatComuni[] $istatComunis
+ * @property \open20\amos\comuni\models\IstatProvince $istatProvince
  */
-class IstatUnioneDeiComuni extends \lispa\amos\core\record\Record
+class IstatUnioneDeiComuni extends \open20\amos\core\record\Record
 {
 
 
@@ -68,7 +68,7 @@ class IstatUnioneDeiComuni extends \lispa\amos\core\record\Record
      */
     public function getIstatComunis()
     {
-        return $this->hasMany(\lispa\amos\comuni\models\IstatComuni::className(), ['istat_unione_dei_comuni_id' => 'id'])->inverseOf('istatUnioneDeiComuni');
+        return $this->hasMany(\open20\amos\comuni\models\IstatComuni::className(), ['istat_unione_dei_comuni_id' => 'id'])->inverseOf('istatUnioneDeiComuni');
     }
 
     /**
@@ -76,6 +76,6 @@ class IstatUnioneDeiComuni extends \lispa\amos\core\record\Record
      */
     public function getIstatProvince()
     {
-        return $this->hasOne(\lispa\amos\comuni\models\IstatProvince::className(), ['id' => 'istat_province_id'])->inverseOf('istatUnioneDeiComunis');
+        return $this->hasOne(\open20\amos\comuni\models\IstatProvince::className(), ['id' => 'istat_province_id'])->inverseOf('istatUnioneDeiComunis');
     }
 }

@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\controllers;
+namespace open20\amos\comuni\controllers;
 
-use lispa\amos\comuni\controllers\base\AjaxController;
+use open20\amos\comuni\controllers\base\AjaxController;
 use yii\web\Controller;
 
 

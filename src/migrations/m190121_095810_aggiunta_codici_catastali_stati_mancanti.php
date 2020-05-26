@@ -10,10 +10,10 @@
  */
 
 /**
- * Class m181113_130010_aggiunta_codice_catastale_serbia
- * Aggiunta codice catastale Serbia, Repubblica di
+ * Class m190121_095810_aggiunta_codici_catastali_stati_mancanti
+ * Aggiunta codici catastali mancanti in stati
  */
-class m181113_130010_aggiunta_codice_catastale_serbia extends \yii\db\Migration
+class m190121_095810_aggiunta_codici_catastali_stati_mancanti extends \yii\db\Migration
 {
 
     private function updateValues($arrayVariazioni) {
@@ -31,14 +31,20 @@ class m181113_130010_aggiunta_codice_catastale_serbia extends \yii\db\Migration
     public function safeUp()
     {
         $this->updateValues([
-            ["271","Z158"],
+            ["270","Z159"],
+            ["272","Z160"],
+            ["324","Z161"],
+            ["467","Z907"],
+            ["959","Z122"],
+            ["925","Z124"],
+            ["999","Z999"],
         ]);
         return true;
     }
 
     public function safeDown()
     {
-        echo "m181113_130010_aggiunta_codice_catastale_serbia cannot be reverted";
+        echo "m190121_095810_aggiunta_codici_catastali_stati_mancanti cannot be reverted";
         return true;
     }
 

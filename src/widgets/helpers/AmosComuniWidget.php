@@ -1,15 +1,23 @@
 <?php
 
-namespace lispa\amos\comuni\widgets\helpers;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    open20\amos\comuni\widgets\helpers
+ * @category   CategoryName
+ */
 
-use lispa\amos\comuni\assets\ComuniAsset;
+namespace open20\amos\comuni\widgets\helpers;
+
+use open20\amos\comuni\assets\ComuniAsset;
+use open20\amos\core\record\Record;
 use yii\base\Exception;
 use yii\base\Widget;
-use yii\helpers\Html;
 
 /**
  * Class AmosComuniWidget
- * @package lispa\amos\comuni\widgets\helpers
  *
  * <p><b>Widget che permette la creazione delle tendine dei dati residenziali: Nazione, Provincia, Comune, Cap</b></p>
  *
@@ -24,7 +32,7 @@ use yii\helpers\Html;
  * <p>esempio di configurazione base</p>
  *
  * ```php
- * echo \lispa\amos\comuni\widgets\helpers\AmosComuniWidget::widget([
+ * echo \open20\amos\comuni\widgets\helpers\AmosComuniWidget::widget([
  *   'form' => $form,
  *   'model' => $model,
  *   'nazioneConfig' => [
@@ -41,6 +49,7 @@ use yii\helpers\Html;
  *   ]
  *   ]);
  * ```
+ * @package open20\amos\comuni\widgets\helpers
  */
 class AmosComuniWidget extends Widget
 {
@@ -53,6 +62,9 @@ class AmosComuniWidget extends Widget
     protected $params;
     public $elementByRow = 4;
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
@@ -87,17 +99,21 @@ class AmosComuniWidget extends Widget
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
         //registro il file comuni_common_js.js a tutte le varie view
         ComuniAsset::register(\Yii::$app->getView());
 
-        $html_nazione   = '';
+        $html_nazione = '';
         $html_provincia = '';
-        $html_comune    = '';
-        $html_cap       = '';
+        $html_comune = '';
+        $html_cap = '';
 
         $dimensions = $this->getCalculatedElementByRow();
+        $this->params['widget'] = $this;
 
         if (isset($this->nazioneConfig)) {
             $this->params['colMdRow'] = array_shift($dimensions);
@@ -107,7 +123,7 @@ class AmosComuniWidget extends Widget
             $this->params['colMdRow'] = array_shift($dimensions);
             $html_provincia = $this->render('provincia_view', $this->params);
             $this->params['colMdRow'] = array_shift($dimensions);
-            $html_comune    = $this->render('comune_view', $this->params);
+            $html_comune = $this->render('comune_view', $this->params);
         } else {
             $this->params['colMdRow'] = array_shift($dimensions);
             $html_comune = $this->render('comune_single_select_view', $this->params);
@@ -118,15 +134,29 @@ class AmosComuniWidget extends Widget
             $html_cap = $this->render('cap_view', $this->params);
         }
 
+        $html_complete = $html_nazione . $html_provincia . $html_comune . $html_cap;
 
-        $html_complete = $html_nazione.$html_provincia.$html_comune.$html_cap;
         return $html_complete;
     }
 
+    /**
+     * @param Record $model
+     * @param string $fieldName
+     * @return string
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function generateFieldId($model, $fieldName)
+    {
+        return $model->formName() . '-' . $fieldName . '-id';
+    }
+
+    /**
+     * @return array
+     */
     public function getCalculatedElementByRow()
     {
-        $nElem      = 1;
-        $divColMd   = null;
+        $nElem = 1;
+        $divColMd = null;
         $dimensions = [];
         if (!empty($this->nazioneConfig)) {
             $nElem++;
@@ -145,8 +175,8 @@ class AmosComuniWidget extends Widget
             }
         } else {
             $completo = $nElem - $resto;
-            $div2     = bcdiv(12, $completo);
-            $div3     = bcdiv(12, $resto);
+            $div2 = bcdiv(12, $completo);
+            $div3 = bcdiv(12, $resto);
             for ($b = $completo; $b > 0; $b--) {
                 $dimensions[] = $div2;
             }

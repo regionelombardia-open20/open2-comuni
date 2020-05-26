@@ -1,10 +1,19 @@
 <?php
 
-use lispa\amos\core\helpers\Html;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
+use open20\amos\core\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var lispa\amos\comuni\models\IstatUnioneDeiComuni $model
+ * @var open20\amos\comuni\models\IstatUnioneDeiComuni $model
  */
 
 $this->title = 'Create Istat Unione Dei Comuni';

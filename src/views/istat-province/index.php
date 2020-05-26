@@ -1,13 +1,22 @@
 <?php
 
-use lispa\amos\core\helpers\Html;
-use lispa\amos\core\views\DataProviderView;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
+use open20\amos\core\helpers\Html;
+use open20\amos\core\views\DataProviderView;
 use yii\widgets\Pjax;
 
 /**
  * @var yii\web\View $this
  * @var yii\data\ActiveDataProvider $dataProvider
- * @var lispa\amos\comuni\models\search\IstatProvinceSearch $model
+ * @var open20\amos\comuni\models\search\IstatProvinceSearch $model
  */
 
 $this->title = 'Elenco province';
@@ -37,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'istat_citta_metropolitane_id', 
 //            'istat_regioni_id', 
                 [
-                    'class' => 'lispa\amos\core\views\grid\ActionColumn',
+                    'class' => 'open20\amos\core\views\grid\ActionColumn',
                 ],
             ],
         ],

@@ -1,16 +1,16 @@
 {
-    "name": "lispa/amos-comuni",
+    "name": "open20/amos-comuni",
     "description": "Dati ISTAT - Comuni, province, regioni, nazioni, continenti aggiornati a LUGLIO 2016",
     "keywords": ["amos", "yii2", "comuni"],
-    "homepage": "http://www.lispa.it/",
+    "homepage": "http://www.open20.it/",
     "type": "library",
-    "proscription": "",
+    "license": "",
     "support": {
-        "source": "https://github.com/lispa/amos-comuni"
+        "source": "https://github.com/open20/amos-comuni"
     },
     "require": {
         "yiisoft/yii2": "*",
-        "lispa/amos-core" : "*"        
+        "open20/amos-core": "*"        
     },    
     "config": {
         "process-timeout": 1800,
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "lispa\\amos\\comuni\\": "src"
+            "open20\\amos\\comuni\\": "src"
         }
     }
 }

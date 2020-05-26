@@ -1,27 +1,27 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\controllers\base;
+namespace open20\amos\comuni\controllers\base;
 
 use Yii;
-use lispa\amos\comuni\models\IstatComuni;
-use lispa\amos\comuni\models\search\IstatComuniSearch;
-use lispa\amos\core\controllers\CrudController;
+use open20\amos\comuni\models\IstatComuni;
+use open20\amos\comuni\models\search\IstatComuniSearch;
+use open20\amos\core\controllers\CrudController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use lispa\amos\core\icons\AmosIcons;
-use lispa\amos\core\helpers\Html;
-use lispa\amos\core\helpers\T;
+use open20\amos\core\icons\AmosIcons;
+use open20\amos\core\helpers\Html;
+use open20\amos\core\helpers\T;
 use yii\helpers\Url;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * IstatComuniController implements the CRUD actions for IstatComuni model.
@@ -226,7 +226,7 @@ class IstatComuniController extends CrudController
         $module = \Yii::$app->getModule('layout');
         if (empty($module)) {
             if (strpos($this->layout, '@') === false) {
-                $this->layout = '@vendor/lispa/amos-core/views/layouts/'.(!empty($layout) ? $layout : $this->layout);
+                $this->layout = '@vendor/open20/amos-core/views/layouts/'.(!empty($layout) ? $layout : $this->layout);
             }
             return true;
         }

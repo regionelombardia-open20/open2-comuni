@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models\base;
+namespace open20\amos\comuni\models\base;
 
 use Yii;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * This is the base-model class for table "istat_continenti".
@@ -20,9 +20,9 @@ use lispa\amos\comuni\AmosComuni;
  * @property integer $id
  * @property string $nome
  *
- * @property \lispa\amos\comuni\models\IstatNazioni[] $istatNazionis
+ * @property \open20\amos\comuni\models\IstatNazioni[] $istatNazionis
  */
-class IstatContinenti extends \lispa\amos\core\record\Record
+class IstatContinenti extends \open20\amos\core\record\Record
 {
 
 
@@ -62,6 +62,6 @@ class IstatContinenti extends \lispa\amos\core\record\Record
      */
     public function getIstatNazionis()
     {
-        return $this->hasMany(\lispa\amos\comuni\models\IstatNazioni::className(), ['istat_continenti_id' => 'id'])->inverseOf('istatContinenti');
+        return $this->hasMany(\open20\amos\comuni\models\IstatNazioni::className(), ['istat_continenti_id' => 'id'])->inverseOf('istatContinenti');
     }
 }

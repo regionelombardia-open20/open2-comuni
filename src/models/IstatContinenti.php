@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models;
+namespace open20\amos\comuni\models;
 
 use Yii;
 
@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "istat_continenti".
  */
-class IstatContinenti extends \lispa\amos\comuni\models\base\IstatContinenti
+class IstatContinenti extends \open20\amos\comuni\models\base\IstatContinenti
 {
 //const _WORKFLOW = 'DiscussioniTopicWorkflow';
 

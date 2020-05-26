@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
+/**
  * Handles the creation for table `post`.
  * Has foreign keys to the tables:
  *

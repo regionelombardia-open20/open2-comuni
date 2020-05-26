@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
 use yii\helpers\Html;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * @var yii\web\View $this
- * @var lispa\amos\comuni\models\IstatComuni $model
+ * @var open20\amos\comuni\models\IstatComuni $model
  */
 
 $this->title = $model->nome;

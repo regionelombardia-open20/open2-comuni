@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models\base;
+namespace open20\amos\comuni\models\base;
 
 use Yii;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 /**
  * This is the base-model class for table "istat_nazioni".
@@ -23,12 +23,14 @@ use lispa\amos\comuni\AmosComuni;
  * @property integer $area
  * @property integer $unione_europea
  * @property string $codice_catastale
+ * @property string $iso2
+ * @property string $iso3
  * @property integer $istat_continenti_id
  *
- * @property \lispa\amos\comuni\models\IstatContinenti $istatContinenti
- * @property \lispa\amos\comuni\models\IstatRegioni[] $istatRegionis
+ * @property \open20\amos\comuni\models\IstatContinenti $istatContinenti
+ * @property \open20\amos\comuni\models\IstatRegioni[] $istatRegionis
  */
-class IstatNazioni extends \lispa\amos\core\record\Record
+class IstatNazioni extends \open20\amos\core\record\Record
 {
 
 
@@ -47,7 +49,7 @@ class IstatNazioni extends \lispa\amos\core\record\Record
     {
         return [
             [['id', 'nome', 'istat_continenti_id'], 'required'],
-            [['id', 'area', 'unione_europea', 'istat_continenti_id'], 'integer'],
+            [['id', 'area', 'unione_europea', 'istat_continenti_id', 'iso2', 'iso3'], 'integer'],
             [['nome', 'nome_inglese', 'codice_catastale'], 'string', 'max' => 255],
             [['istat_continenti_id'], 'exist', 'skipOnError' => true, 'targetClass' => IstatContinenti::className(), 'targetAttribute' => ['istat_continenti_id' => 'id']],
         ];
@@ -74,7 +76,7 @@ class IstatNazioni extends \lispa\amos\core\record\Record
      */
     public function getIstatContinenti()
     {
-        return $this->hasOne(\lispa\amos\comuni\models\IstatContinenti::className(), ['id' => 'istat_continenti_id'])->inverseOf('istatNazionis');
+        return $this->hasOne(\open20\amos\comuni\models\IstatContinenti::className(), ['id' => 'istat_continenti_id'])->inverseOf('istatNazionis');
     }
 
     /**
@@ -82,6 +84,6 @@ class IstatNazioni extends \lispa\amos\core\record\Record
      */
     public function getIstatRegionis()
     {
-        return $this->hasMany(\lispa\amos\comuni\models\IstatRegioni::className(), ['istat_nazioni_id' => 'id'])->inverseOf('istatNazioni');
+        return $this->hasMany(\open20\amos\comuni\models\IstatRegioni::className(), ['istat_nazioni_id' => 'id'])->inverseOf('istatNazioni');
     }
 }

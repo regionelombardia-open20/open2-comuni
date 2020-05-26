@@ -1,6 +1,15 @@
 <?php
 
-namespace lispa\amos\comuni\models;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
+namespace open20\amos\comuni\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -8,7 +17,7 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "istat_comuni_cap".
  */
-class IstatComuniCap extends \lispa\amos\comuni\models\base\IstatComuniCap
+class IstatComuniCap extends \open20\amos\comuni\models\base\IstatComuniCap
 {
 
     /*public function init()
@@ -35,6 +44,7 @@ class IstatComuniCap extends \lispa\amos\comuni\models\base\IstatComuniCap
     * Returns the text hint for the specified attribute.
     * @param string $attribute the attribute name
     * @return string the attribute hint
+    * @see attributeHints
     */
     public function getAttributeHint($attribute) {
             $hints = $this->attributeHints();

@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\widgets\icons;
+namespace open20\amos\comuni\widgets\icons;
 
-use lispa\amos\core\widget\WidgetIcon;
+use open20\amos\core\widget\WidgetIcon;
 use Yii;
 use yii\helpers\ArrayHelper;
-use lispa\amos\comuni\AmosComuni;
+use open20\amos\comuni\AmosComuni;
 
 class WidgetIconComuni extends WidgetIcon
 {

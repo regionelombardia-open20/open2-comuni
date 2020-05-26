@@ -1,11 +1,20 @@
 <?php
 
-use lispa\amos\core\helpers\Html;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
+use open20\amos\core\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /**
  * @var yii\web\View $this
- * @var lispa\amos\comuni\models\search\IstatNazioniSearch $model
+ * @var open20\amos\comuni\models\search\IstatNazioniSearch $model
  * @var yii\widgets\ActiveForm $form
  */
 ?>

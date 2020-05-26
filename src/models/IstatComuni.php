@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Lombardia Informatica S.p.A.
+ * Aria S.p.A.
  * OPEN 2.0
  *
  *
- * @package    lispa\amos\comuni
+ * @package    open20\amos\comuni
  * @category   CategoryName
  */
 
-namespace lispa\amos\comuni\models;
+namespace open20\amos\comuni\models;
 
 use yii\helpers\ArrayHelper;
 
@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "istat_comuni".
  */
-class IstatComuni extends \lispa\amos\comuni\models\base\IstatComuni
+class IstatComuni extends \open20\amos\comuni\models\base\IstatComuni
 {
 //const _WORKFLOW = 'DiscussioniTopicWorkflow';
 

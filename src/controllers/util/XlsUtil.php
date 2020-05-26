@@ -1,6 +1,15 @@
 <?php
 
-namespace lispa\amos\comuni\controllers\util;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
+namespace open20\amos\comuni\controllers\util;
 
 use PHPExcel_IOFactory;
 use yii\base\Exception;

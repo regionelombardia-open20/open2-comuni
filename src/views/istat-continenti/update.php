@@ -1,10 +1,19 @@
 <?php
 
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    Open20Package
+ * @category   CategoryName
+ */
+
 use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var lispa\amos\comuni\models\IstatContinenti $model
+ * @var open20\amos\comuni\models\IstatContinenti $model
  */
 
 $this->title = 'Aggiorna Istat Continenti';
