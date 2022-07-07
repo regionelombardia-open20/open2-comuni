@@ -99,7 +99,6 @@ class ImportatoreController extends Controller {
   /**
    * Viene creata una migration contenente tutti i comuni da aggiornare (se presenti)
    * 
-   * @see https://github.com/matteocontrini/comuni-json for the json file
    * usa il file comuni.json per confrontare il codice castastale salvato a DB con quello del file:
    * se differenti viene impostato per essere aggiornato con quello del file.
    * 
@@ -174,7 +173,6 @@ class ImportatoreController extends Controller {
   /**
    * Viene creata una migration contenente tutti i cap da inserire (se presenti)
    * 
-   * @see https://github.com/matteocontrini/comuni-json for the file
    * usa il file comuni.json per confrontare i CAP salvati a DB con quelli del file:
    * se ve ne sono di differenti, vengono impostati per essere inseriti a DB.
    * 
