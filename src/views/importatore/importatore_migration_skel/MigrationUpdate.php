@@ -20,22 +20,22 @@ use yii\db\Schema;
 class <?= $migrationName; ?> extends \yii\db\Migration {
 
     public function safeUp() {
-    <? foreach ($new_data as $k => $array_update ): ?>
+    <?php foreach ($new_data as $k => $array_update ): ?>
     $this->update(
             "<?= $table_name; ?>",
-                [<? foreach ($array_update['columns'] as $nome_campo => $valore_campo ){?> "<?=$nome_campo;?>" => "<?=$valore_campo;?>", <?}?> ],
-                [<? foreach ($array_update['conditions'] as $nome_campo_cond => $valore_campo_cond ){?> "<?=$nome_campo_cond;?>" => "<?=$valore_campo_cond;?>", <?}?> ]
+                [<?php foreach ($array_update['columns'] as $nome_campo => $valore_campo ){?> "<?=$nome_campo;?>" => "<?=$valore_campo;?>", <?php }?> ],
+                [<?php foreach ($array_update['conditions'] as $nome_campo_cond => $valore_campo_cond ){?> "<?=$nome_campo_cond;?>" => "<?=$valore_campo_cond;?>", <?php }?> ]
             );
-        <? endforeach; ?>
+        <?php endforeach; ?>
     }
 
     public function safeDown() {
-    <? foreach ($restore_data as $k => $array_restore ): ?>
+    <?php foreach ($restore_data as $k => $array_restore ): ?>
         $this->update(
             "<?= $table_name; ?>",
-            [<? foreach ($array_restore['columns'] as $nome_campo => $valore_campo ){?> "<?=$nome_campo;?>" => "<?=$valore_campo;?>", <?}?> ],
-            [<? foreach ($array_restore['conditions'] as $nome_campo_cond => $valore_campo_cond ){?> "<?=$nome_campo_cond;?>" => "<?=$valore_campo_cond;?>", <?}?> ]
+            [<?php foreach ($array_restore['columns'] as $nome_campo => $valore_campo ){?> "<?=$nome_campo;?>" => "<?=$valore_campo;?>", <?php }?> ],
+            [<?php foreach ($array_restore['conditions'] as $nome_campo_cond => $valore_campo_cond ){?> "<?=$nome_campo_cond;?>" => "<?=$valore_campo_cond;?>", <?php }?> ]
         );
-    <? endforeach; ?>
+    <?php endforeach; ?>
     }
 }

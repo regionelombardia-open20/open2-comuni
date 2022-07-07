@@ -22,14 +22,6 @@ use open20\amos\comuni\AmosComuni;
 
 class AjaxController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function beforeAction($action)
-    {
-        $this->enableCsrfValidation = false;
-        return parent::beforeAction($action);
-    }
 
     public function actionComuniByProvincia($soppresso = null)
     {

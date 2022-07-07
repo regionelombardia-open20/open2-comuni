@@ -20,21 +20,21 @@ use yii\db\Schema;
 class <?= $migrationName; ?> extends \yii\db\Migration {
 
     public function safeUp() {
-    <? foreach ($new_data as $k => $array_insert ): ?>
+    <?php foreach ($new_data as $k => $array_insert ): ?>
     $this->batchInsert(
             "<?= $table_name; ?>",
-                [<? foreach ($array_insert['columns'] as $k=> $nome_campo ){?> '<?=$nome_campo;?>', <?}?> ],
-                [[<? foreach ($array_insert['values'] as $k1 => $valore_campo_cond ){?> '<?=$valore_campo_cond;?>', <?}?>] ]
+                [<?php foreach ($array_insert['columns'] as $k=> $nome_campo ){?> '<?=$nome_campo;?>', <?php }?> ],
+                [[<?php foreach ($array_insert['values'] as $k1 => $valore_campo_cond ){?> '<?=$valore_campo_cond;?>', <?php }?>] ]
             );
-        <? endforeach; ?>
+        <?php endforeach; ?>
     }
 
     public function safeDown() {
-    <? foreach ($restore_data as $k => $array_delete ): ?>
+    <?php foreach ($restore_data as $k => $array_delete ): ?>
         $this->delete(
             "<?= $table_name; ?>",
-            [<? foreach ($array_delete['conditions'] as $nome_campo_cond => $valore_campo_cond ){?> "<?=$nome_campo_cond;?>" => "<?=$valore_campo_cond;?>", <?}?> ]
+            [<?php foreach ($array_delete['conditions'] as $nome_campo_cond => $valore_campo_cond ){?> "<?=$nome_campo_cond;?>" => "<?=$valore_campo_cond;?>", <?php }?> ]
         );
-    <? endforeach; ?>
+    <?php endforeach; ?>
     }
 }

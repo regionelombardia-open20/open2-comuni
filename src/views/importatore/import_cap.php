@@ -15,22 +15,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-<?php $form = ActiveForm::begin(); ?>
-<?php $this->beginBlock('principale'); ?>
+<?php //$form = ActiveForm::begin(); ?>
+<?php echo $form = \yii\helpers\Html::beginForm('','post'); ?>
+<?php
+/*$this->beginBlock('principale');
 
-<?php $this->endBlock('principale'); ?>
-<?php $itemsTab[] = [
+$this->endBlock('principale');
+$itemsTab[] = [
     'label' => '',
     'content' => $this->blocks['principale'],
-];
+];*/
 ?>
 
-<?= Tabs::widget(
+<?php
+/*echo Tabs::widget(
     [
         'encodeLabels' => false,
         'items' => $itemsTab
     ]
-);
+);*/
 ?>
 
 
@@ -68,7 +71,8 @@ else:
     if( !empty($dati)):
         echo Html::submitButton('Genera', ['name'=> 'submit', 'value'=> true, 'class' => 'btn btn-primary'] );
     endif; ?>
-<?php ActiveForm::end(); ?>
+    <?php //ActiveForm::end(); ?>
+    <?php \yii\helpers\Html::endForm(); ?>
 
 </div>
 
