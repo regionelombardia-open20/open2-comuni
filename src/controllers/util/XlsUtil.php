@@ -3,6 +3,7 @@
 namespace open20\amos\comuni\controllers\util;
 
 use PHPExcel_IOFactory;
+use PHPExcel_Calculation;
 use yii\base\Exception;
 
 class XlsUtil {

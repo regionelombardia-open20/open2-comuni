@@ -30,29 +30,46 @@ $comuneAttribute = $comuneConfig['attribute'];
 $capAttribute = $capConfig['attribute'];
 
 //id del campo: se specificato nelle option uso quello, altrimenti sarà nel formato 'campo_db-id'
-$id = isset($nazioneConfig['options']['id']) ? $nazioneConfig['options']['id'] : $widget->generateFieldId($model, $nazioneAttribute);
-$provincia_id = isset($provinciaConfig['options']['id']) ? $provinciaConfig['options']['id'] : $widget->generateFieldId($model, $provinciaAttribute);
-$comune_id = isset($comuneConfig['options']['id']) ? $comuneConfig['options']['id'] : $widget->generateFieldId($model, $comuneAttribute);
-$cap_id = isset($capConfig['options']['id']) ? $capConfig['options']['id'] : $widget->generateFieldId($model, $capAttribute);
+$id = isset($nazioneConfig['options']['id'])
+    ? $nazioneConfig['options']['id']
+    : $widget->generateFieldId($model, $nazioneAttribute);
 
+$provincia_id = isset($provinciaConfig['options']['id'])
+    ? $provinciaConfig['options']['id']
+    : $widget->generateFieldId($model, $provinciaAttribute);
+
+$comune_id = isset($comuneConfig['options']['id'])
+    ? $comuneConfig['options']['id']
+    : $widget->generateFieldId($model, $comuneAttribute);
+
+$cap_id = isset($capConfig['options']['id'])
+    ? $capConfig['options']['id']
+    : $widget->generateFieldId($model, $capAttribute);
+
+$label = isset($nazioneConfig['options']['label']) ? $nazioneConfig['options']['label'] : null;
+$divId = isset($nazioneConfig['options']['divId']) ? $nazioneConfig['options']['divId'] : null;
+$style = isset($nazioneConfig['options']['style']) ? $nazioneConfig['options']['style'] : null;
 ?>
 
-<div class="<?= isset($nazioneConfig['class']) ? $nazioneConfig['class'] : 'col-md-' . $colMdRow; ?>">
+<div class="<?= isset($nazioneConfig['class']) ? $nazioneConfig['class'] : 'col-md-' . $colMdRow; ?>" id="<?= $divId ?>" style="<?= $style ?>">
     <!-- nazione italia attiva la provincia -->
     <?= $form->field($model, $nazioneAttribute)->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(IstatNazioni::find()->orderBy('nome')->asArray()->all(), 'id', 'nome'),
-        'options' => array_merge(
-            [
-                'placeholder' => Yii::t('app', 'Digita il nome della nazione'),
+        'data' => ArrayHelper::map(
+            IstatNazioni::find()->orderBy('nome')->asArray()->all(),
+            'id', 'nome'
+        ),
+        'options' => array_merge([
+                'placeholder' => Yii::t('amoscomuni', '#select_country_placeholder'),
                 'id' => $id,
-            ], !empty($nazioneConfig['options']) ? $nazioneConfig['options'] : []
+            ],
+            !empty($nazioneConfig['options']) ? $nazioneConfig['options'] : []
         ),
-        'pluginOptions' => array_merge(
-            [
+        'pluginOptions' => array_merge([
                 'allowClear' => true
-            ], !empty($nazioneConfig['pluginOptions']) ? $nazioneConfig['pluginOptions'] : []
+            ],
+            !empty($nazioneConfig['pluginOptions']) ? $nazioneConfig['pluginOptions'] : []
         ),
-    ]); ?>
+    ])->label($label); ?>
     <?php
     $script = <<< JS
     setTimeout( function(){

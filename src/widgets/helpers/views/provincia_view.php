@@ -26,9 +26,12 @@ use open20\amos\comuni\AmosComuni;
 $provinciaAttribute = $provinciaConfig['attribute'];
 $id = isset($provinciaConfig['options']['id']) ? $provinciaConfig['options']['id'] : $widget->generateFieldId($model, $provinciaAttribute);
 
+$label = isset($provinciaConfig['options']['label']) ? $provinciaConfig['options']['label'] : null;
+$divId = isset($provinciaConfig['options']['divId']) ? $provinciaConfig['options']['divId'] : null;
+$style = isset($nazioneConfig['options']['style']) ? $nazioneConfig['options']['style'] : null;
 ?>
 
-<div class="<?= isset($provinciaConfig['class']) ? $provinciaConfig['class'] : 'col-md-' . $colMdRow; ?>">
+<div class="<?= isset($provinciaConfig['class']) ? $provinciaConfig['class'] : 'col-md-' . $colMdRow; ?>" id="<?= $divId ?>" style="<?= $style ?>">
     <?= $form->field($model, $provinciaAttribute)->widget(\kartik\select2\Select2::classname(), [
         'data' => \yii\helpers\ArrayHelper::map(\open20\amos\comuni\models\IstatProvince::find()->orderBy('nome')->asArray()->all(), 'id', 'nome'),
         'options' => array_merge(
@@ -42,6 +45,6 @@ $id = isset($provinciaConfig['options']['id']) ? $provinciaConfig['options']['id
                 'allowClear' => true
             ], !empty($provinciaConfig['pluginOptions']) ? $provinciaConfig['pluginOptions'] : []
         ),
-    ]);
+    ])->label($label);
     ?>
 </div>

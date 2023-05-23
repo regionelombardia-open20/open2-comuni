@@ -11,8 +11,10 @@
 
 namespace open20\amos\comuni\widgets\helpers;
 
+use open20\amos\comuni\AmosComuni;
 use open20\amos\comuni\assets\ComuniAsset;
 use open20\amos\core\record\Record;
+
 use yii\base\Exception;
 use yii\base\Widget;
 
@@ -53,13 +55,52 @@ use yii\base\Widget;
  */
 class AmosComuniWidget extends Widget
 {
+    /**
+     * 
+     * @var type
+     */
     public $form;
+
+    /**
+     * 
+     * @var type
+     */
     public $model;
+    
+    /**
+     * 
+     * @var type
+     */
     public $nazioneConfig;
+    
+    /**
+     * 
+     * @var type
+     */
     public $provinciaConfig;
+    
+    /**
+     * 
+     * @var type
+     */
     public $comuneConfig;
+    
+    /**
+     * 
+     * @var type
+     */
     public $capConfig;
+    
+    /**
+     * 
+     * @var type
+     */
     protected $params;
+    
+    /**
+     * 
+     * @var type
+     */
     public $elementByRow = 4;
 
     /**
@@ -69,25 +110,65 @@ class AmosComuniWidget extends Widget
     {
         parent::init();
 
-        //controllo esistenza attributo form
+        // check on form object
         if (!isset($this->form)) {
-            throw new Exception(\Yii::t('app', 'Undefined Form object'));
+            throw new Exception(AmosComuni::t('amoscomuni', '#no_form_object'));
         }
-        //controllo esistenza attributo model
+        
+        // check on model object
         if (!isset($this->model)) {
-            throw new Exception(\Yii::t('app', 'Undefined Model object'));
+            throw new Exception(AmosComuni::t('amoscomuni', '#no_model_object'));
         }
 
-        //se presente Provincia è richiesto anche Comune: se presente provincia ma non comune lancio errore
+        // check the correct chain Provincia/Comune
         if (isset($this->provinciaConfig) && !isset($this->comuneConfig)) {
-            throw new Exception(\Yii::t('app', 'Provincia e Comune must both be declared'));
+            throw new Exception(AmosComuni::t('amoscomuni', '#no_province_and_city'));
         }
 
-        //Cap necessita di Comune
+        // check the correct chain Cap/Comune
         if ((isset($this->capConfig) && !isset($this->comuneConfig))) {
-            throw new Exception(\Yii::t('app', 'Comune must be declared for Cap usage'));
+            throw new Exception(AmosComuni::t('amoscomuni', '#no_province_and_city'));
         }
+        
+        $nazioneAttribute = $this->nazioneConfig['attribute'];
+        $provinciaAttribute = $this->provinciaConfig['attribute'];
+        $comuneAttribute = $this->comuneConfig['attribute'];
+        $capAttribute = $this->capConfig['attribute'];
 
+        $nazione_id = isset($this->nazioneConfig['options']['id'])
+            ? $this->nazioneConfig['options']['id']
+            : $this->generateFieldId($this->model, $nazioneAttribute);
+        
+        $provincia_id = isset($this->provinciaConfig['options']['id'])
+            ? $this->provinciaConfig['options']['id']
+            : $this->generateFieldId($this->model, $provinciaAttribute);
+        
+        $comune_id = isset($this->comuneConfig['options']['id'])
+            ? $this->comuneConfig['options']['id']
+            : $this->generateFieldId($this->model, $comuneAttribute);
+        
+        $cap_id = isset($this->capConfig['options']['id'])
+            ? $this->capConfig['options']['id']
+            : $this->generateFieldId($this->model, $capAttribute);
+
+        $colMdRow = array_shift($this->getCalculatedElementByRow());
+
+        $nazioneClass = isset($this->nazioneConfig['class'])
+            ? $this->nazioneConfig['class']
+            : 'col-md-' . $colMdRow;
+        
+        $provinciaClass = isset($this->provinciaConfig['class'])
+            ? $this->provinciaConfig['class']
+            : 'col-md-' . $colMdRow;
+        
+        $comuneClass = isset($this->comuneConfig['class'])
+            ? $this->comuneConfig['class']
+            : 'col-md-' . $colMdRow;
+
+        $capClass = isset($this->capConfig['class'])
+                ? $this->capConfig['class']
+                : 'col-md-' . $colMdRow;
+        
         $this->params = [
             'model' => $this->model,
             'form' => $this->form,
@@ -95,7 +176,20 @@ class AmosComuniWidget extends Widget
             'provinciaConfig' => $this->provinciaConfig,
             'comuneConfig' => $this->comuneConfig,
             'capConfig' => $this->capConfig,
-            'colMdRow' => 3
+            'colMdRow' => array_shift($this->getCalculatedElementByRow()),
+            
+            'nazioneAttribute' => $nazioneAttribute,
+            'provinciaAttribute' => $provinciaAttribute,
+            'comuneAttribute' => $comuneAttribute,
+            'capAttribute' => $capAttribute,
+            'nazione_id' => $nazione_id,
+            'provincia_id' => $provincia_id,
+            'comune_id' => $comune_id,
+            'cap_id' => $cap_id,
+            'nazioneClass' => $nazioneClass,
+            'provinciaClass' => $provinciaClass,
+            'comuneClass' => $comuneClass,
+            'capClass' => $capClass
         ];
     }
 
@@ -164,11 +258,15 @@ class AmosComuniWidget extends Widget
         if (!empty($this->provinciaConfig)) {
             $nElem++;
         }
+        if (!empty($this->comuneConfig)) {
+            $nElem++;
+        }
         if (!empty($this->capConfig)) {
             $nElem++;
         }
         $resto = $nElem % $this->elementByRow;
-        if ($resto = $nElem || $resto == 0) {
+        
+        if ($resto == $nElem || $resto == 0) {
             $div1 = bcdiv(12, $nElem);
             for ($n = $nElem; $n > 0; $n--) {
                 $dimensions[] = $div1;
@@ -184,6 +282,7 @@ class AmosComuniWidget extends Widget
                 $dimensions[] = $div3;
             }
         }
+        
         return $dimensions;
     }
 }

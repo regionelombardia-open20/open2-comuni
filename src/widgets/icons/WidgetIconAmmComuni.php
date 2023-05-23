@@ -49,7 +49,7 @@ class WidgetIconAmmComuni extends WidgetIcon
 
     public function getWidgetsIcon()
     {
-        return AmosWidgets::find()
+        return \open20\amos\dashboard\models\AmosWidgets::find()
             ->andWhere([
                 'child_of' => self::className()
             ])->all();

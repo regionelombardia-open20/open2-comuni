@@ -13,7 +13,7 @@ return [
     'Aggiorna' => 'Aggiorna',
     'Aggiornamento Codici Catastali' => 'Aggiornamento Codici Catastali',
     'Annulla' => 'Annulla',
-    'Appartenente all\'UE' => 'Appartenente all\'UE',
+    "Appartenente all'UE" => "Appartenente all'UE",
     'Area' => 'Area',
     'Capoluogo' => 'Capoluogo',
     'Capoluogo di provincia' => 'Capoluogo di provincia',
@@ -69,6 +69,7 @@ return [
     'Regione' => 'Regione',
     'Ripartizione geografica' => 'Ripartizione geografica',
     'Salva' => 'Salva',
+    '#select_country_placeholder' => 'Digita il nome della nazione ...',
     '#select_commune_placeholder' => 'Digita il nome del comune ...',
     '#select_province_placeholder' => 'Digita il nome della provincia ...',
     'Sigla' => 'Sigla',
@@ -77,4 +78,14 @@ return [
     'Soppresso' => 'Soppresso',
     'Unione dei comuni' => 'Unione dei comuni',
     'Variazioni Comuni' => 'Variazioni Comuni',
+    
+    '#no_form_object' => 'Undefined Form object',
+    '#no_model_object' => 'Undefined Model object',
+    '#no_province_and_city' => 'Provincia e Comune must both be declared',
+    '#no_city_and_cap' => 'Comune must be declared for Cap usage',
+    '#dd_placeholder_nation' => 'Digita il nome della nazione...',
+    '#dd_placeholder_province' => 'Digita il nome della provincia...',
+    '#dd_placeholder_city' => 'Digita il nome del comune...',
+    '#dd_placeholder_cap' => 'Digita il cap...',
+    '#no_results' => 'Nessun risultato trovato'
 ];

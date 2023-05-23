@@ -32,9 +32,12 @@ $id = isset($comuneConfig['options']['id']) ? $comuneConfig['options']['id'] : $
 $provinciaAttribute = $provinciaConfig['attribute'];
 $id_provincia = isset($provinciaConfig['options']['id']) ? $provinciaConfig['options']['id'] : $widget->generateFieldId($model, $provinciaAttribute);
 
+$label = isset($comuneConfig['options']['label']) ? $comuneConfig['options']['label'] : null;
+$divId = isset($comuneConfig['options']['divId']) ? $comuneConfig['options']['divId'] : null;
+$style = isset($nazioneConfig['options']['style']) ? $nazioneConfig['options']['style'] : null;
 ?>
 
-<div class="<?= isset($comuneConfig['class']) ? $comuneConfig['class'] : 'col-md-' . $colMdRow; ?>">
+<div class="<?= isset($comuneConfig['class']) ? $comuneConfig['class'] : 'col-md-' . $colMdRow; ?>" id="<?= $divId ?>" style="<?= $style ?>">
     <?= $form->field($model, $comuneAttribute)->widget(DepDrop::classname(), [
         'type' => DepDrop::TYPE_SELECT2,
         'data' => ArrayHelper::map(IstatComuni::find()->andWhere(['istat_province_id' => $model->$provinciaAttribute])->orderBy('nome')->asArray()->all(), 'id', 'nome'),
@@ -62,5 +65,5 @@ $id_provincia = isset($provinciaConfig['options']['id']) ? $provinciaConfig['opt
                 clearValueIfParentEmpty($(this));
              }",
         ],
-    ]); ?>
+    ])->label($label); ?>
 </div>

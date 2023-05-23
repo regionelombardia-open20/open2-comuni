@@ -22,41 +22,109 @@ use open20\amos\comuni\AmosComuni;
 
 class AjaxController extends Controller
 {
+    /**
+     * This is public to be compliant with
+     * Access level to open20\amos\comuni\controllers\base\AjaxController::$id 
+     * must be public (as in class yii\web\Controller)
+     * 
+     * @var type
+     */
+    public $id = null;
 
-    public function actionComuniByProvincia($soppresso = null)
+    /**
+     * 
+     * @var type
+     */
+    protected $req;
+
+    /**
+     * 
+     * @var type
+     */
+    protected $id_selected = null;
+
+    /**
+     * 
+     */
+    public function init()
     {
-        $req = \Yii::$app->getRequest()->post();
-        if (\Yii::$app->getRequest()->isGet) {
-            $req = \Yii::$app->getRequest()->get();
+        parent::init();
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        
+        $this->req = Yii::$app->getRequest()->post();
+        if (Yii::$app->getRequest()->isGet) {
+            $this->req = Yii::$app->getRequest()->get();
         }
 
-        $out = [];
-        if (isset($req['depdrop_parents'])) {
-            $id = end($req['depdrop_parents']);
-            $id_selected = end($req['depdrop_params']);
-            $query_by_provincia = IstatComuni::find()->andWhere(['istat_province_id' => $id]);
-            if(!is_null($soppresso)) {
-                $query_by_provincia ->andWhere(['soppresso' => $soppresso]);
-            }
-            $comuni = $query_by_provincia->orderBy('nome ASC')->asArray()->all();
-            $selected = null;
-            if ($id != null && count($comuni) > 0) {
-                $selected = '';
-                foreach ($comuni as $i => $comune) {
-                    $out[] = ['id' => $comune['id'], 'name' => $comune['nome']];
-
-                    if ($id_selected) {
-                        $selected = $id_selected;
-                    }
-                }
-                // Shows how you can preselect a value
-                return Json::encode(['output' => $out, 'selected' => $selected]);
-                return;
-            }
+        if (isset($this->req['depdrop_parents'])) {
+            $this->id = end($this->req['depdrop_parents']);
+            $this->id_selected = end($this->req['depdrop_all_params']);
         }
-        return Json::encode(['output' => '', 'selected' => '']);
     }
 
+    /**
+     * 
+     * @param type $soppresso
+     * @return type
+     */
+    public function actionProvinceByNazione($soppresso = null)
+    {
+        $out = [];
+        if (!empty($this->id)) {
+            $query = IstatProvince::find();
+            
+            // TBD fix it this is a quick & raw sol
+            if ($this->id == 1) {
+                $this->id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+            }
+            
+            $query->andWhere(['istat_regioni_id' => $this->id]);
+            if (!is_null($soppresso)) {
+                $query->andWhere(['soppressa' => $soppresso]);
+            }
+            
+            $province = $query->orderBy('nome ASC')->asArray()->all();
+            if ($this->id != null && count($province) > 0) {
+                foreach ($province as $i => $provincia) {
+                    $out[] = ['id' => $provincia['id'], 'name' => $provincia['nome']];
+                }
+            }
+        }
+
+        return ['output' => $out, 'selected' => $this->id_selected];
+    }
+
+    /**
+     * 
+     * @param type $soppresso
+     * @return type
+     */
+    public function actionComuniByProvincia($soppresso = null)
+    {
+        $out = [];
+        if (!empty($this->id)) {
+            $query = IstatComuni::find()->andWhere(['istat_province_id' => $this->id]);
+            if (!is_null($soppresso)) {
+                $query->andWhere(['soppresso' => $soppresso]);
+            }
+
+            $comuni = $query->orderBy('nome ASC')->asArray()->all();
+            if ($this->id != null && count($comuni) > 0) {
+                foreach ($comuni as $i => $comune) {
+                    $out[] = ['id' => $comune['id'], 'name' => $comune['nome']];
+                }
+            }
+        }
+
+        return ['output' => $out, 'selected' => $this->id_selected];
+    }
+
+    /**
+     * 
+     * @param type $search
+     * @param type $id
+     * @return type
+     */
     public function actionComuni($search = null, $id = null)
     {
         $out = ['more' => false];
@@ -67,16 +135,31 @@ class AjaxController extends Controller
                 ->where('nome LIKE "%' . $search . '%"');
             //->limit(20);
             $command = $query->createCommand();
+            
+            
             $data = $command->queryAll();
             $out['results'] = array_values($data);
-        } elseif ($id > 0) {
-            $out['results'] = ['id' => $id, 'text' => IstatComuni::findOne($id)->nome];
+        } elseif ($this->id > 0) {
+            $out['results'] = [
+                'id' => $this->id,
+                'text' => IstatComuni::findOne($id)->nome
+            ];
         } else {
-            $out['results'] = ['id' => 0, 'text' => AmosComuni::t('amoscomuni', 'Nessun risultato trovato')];
+            $out['results'] = [
+                'id' => 0,
+                'text' => AmosComuni::t('amoscomuni', '#no_results')
+            ];
         }
-        return Json::encode($out);
+        
+        return $out;
     }
 
+    /**
+     * 
+     * @param type $search
+     * @param type $id
+     * @return type
+     */
     public function actionProvince($search = null, $id = null)
     {
         $out = ['more' => false];
@@ -89,45 +172,44 @@ class AjaxController extends Controller
             $command = $query->createCommand();
             $data = $command->queryAll();
             $out['results'] = array_values($data);
-        } elseif ($id > 0) {
-            $out['results'] = ['id' => $id, 'text' => IstatProvince::findOne($id)->nome];
+        } elseif ($this->id > 0) {
+            $out['results'] = [
+                'id' => $this->id,
+                'text' => IstatProvince::findOne($id)->nome
+            ];
         } else {
-            $out['results'] = ['id' => 0, 'text' => AmosComuni::t('amoscomuni', 'Nessun risultato trovato')];
+            $out['results'] = [
+                'id' => 0,
+                'text' => AmosComuni::t('amoscomuni', '#no_results')
+            ];
         }
-        return Json::encode($out);
+        
+        return $out;
     }
 
+    /**
+     * 
+     * @param type $sospeso
+     * @return type
+     */
     public function actionCapsByComune($sospeso = null)
     {
-        $req = \Yii::$app->getRequest()->post();
-        if (\Yii::$app->getRequest()->isGet) {
-            $req = \Yii::$app->getRequest()->get();
-        }
-
         $out = [];
-        if (isset($req['depdrop_parents'])) {
-            $id = end($req['depdrop_parents']);
-            $id_selected = end($req['depdrop_params']);
-            $query_by_comune = IstatComuniCap::find()->andWhere(['comune_id' => $id]);
-            if(!is_null($sospeso)) {
-                $query_by_comune ->andWhere(['sospeso' => $sospeso]);
+        if (!empty($this->id)) {
+            $query = IstatComuniCap::find()->andWhere(['comune_id' => $this->id]);
+            if (!is_null($sospeso)) {
+                $query->andWhere(['sospeso' => $sospeso]);
             }
-            $caps = $query_by_comune->orderBy('cap ASC')->asArray()->all();
-            $selected = null;
-            if ($id != null && count($caps) > 0) {
-                $selected = '';
+            $caps = $query->orderBy('cap ASC')->asArray()->all();
+            
+            if ($this->id != null && count($caps) > 0) {
                 foreach ($caps as $i => $cap) {
                     $out[] = ['id' => $cap['id'], 'name' => $cap['cap']];
-
-                    if ($id_selected) {
-                        $selected = $id_selected;
-                    }
                 }
-                // Shows how you can preselect a value
-                return Json::encode(['output' => $out, 'selected' => $selected]);
             }
         }
-        return Json::encode(['output' => '', 'selected' => '']);
-    }
 
+        return ['output' => $out, 'selected' => $this->id_selected];
+    }
+    
 }

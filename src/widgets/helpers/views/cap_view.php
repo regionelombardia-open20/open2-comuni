@@ -1,12 +1,16 @@
 <div class="<?= isset($capConfig['class']) ? $capConfig['class'] : 'col-md-' . $colMdRow; ?>">
-<?php
+    <?php
     //id del campo: se specificato nelle option uso quello, altrimenti sarà nel formato 'campo_db-id'
-    $id = isset($capConfig['options']['id']) ? $capConfig['options']['id'] : $capConfig['attribute'].'-id';
-    $id_comune = isset($comuneConfig['options']['id']) ? $comuneConfig['options']['id'] : $comuneConfig['attribute'].'-id';
+    $id = isset($capConfig['options']['id']) ? $capConfig['options']['id'] : $capConfig['attribute'] . '-id';
+    $id_comune = isset($comuneConfig['options']['id']) ? $comuneConfig['options']['id'] : $comuneConfig['attribute'] . '-id';
+
+    $label = isset($capConfig['options']['label']) ? $capConfig['options']['label'] : null;
+    $divId = isset($capConfig['options']['divId']) ? $capConfig['options']['divId'] : null;
+    $style = isset($nazioneConfig['options']['style']) ? $nazioneConfig['options']['style'] : null;
 
     echo $form->field($model, $capConfig['attribute'])->widget(\kartik\depdrop\DepDrop::classname(), [
         'type' => \kartik\depdrop\DepDrop::TYPE_SELECT2,
-        'data' => \yii\helpers\ArrayHelper::map(\open20\amos\comuni\models\IstatComuniCap::find()->andWhere(['comune_id' => $model->$comuneConfig['attribute']])->orderBy('cap')->asArray()->all(), 'id', 'cap'),
+        'data' => \yii\helpers\ArrayHelper::map(\open20\amos\comuni\models\IstatComuniCap::find()->andWhere(['comune_id' => $model->{$comuneConfig['attribute']}])->orderBy('cap')->asArray()->all(), 'id', 'cap'),
         'options' => array_merge(
             [
                 'id' => $id,
@@ -28,11 +32,11 @@
         ),
         'pluginEvents' => [
             //il change viene chiamato al cambio del padre: comune
-            "depdrop:afterChange"=>"function(event, id, value, count) { 
+            "depdrop:afterChange" => "function(event, id, value, count) { 
                 clearValueIfParentEmpty($(this));
             }",
         ],
-    ]);
+    ])->label($label);
 
-?>
+    ?>
 </div>

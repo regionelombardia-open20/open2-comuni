@@ -11,17 +11,18 @@
 
 namespace open20\amos\comuni\controllers\base;
 
-use Yii;
+use open20\amos\comuni\AmosComuni;
 use open20\amos\comuni\models\IstatProvince;
 use open20\amos\comuni\models\search\IstatProvinceSearch;
 use open20\amos\core\controllers\CrudController;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use open20\amos\core\icons\AmosIcons;
 use open20\amos\core\helpers\Html;
 use open20\amos\core\helpers\T;
+
+use Yii;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 use yii\helpers\Url;
-use open20\amos\comuni\AmosComuni;
 
 /**
  * IstatProvinceController implements the CRUD actions for IstatProvince model.

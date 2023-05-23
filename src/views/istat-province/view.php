@@ -32,6 +32,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <div class="btnViewContainer pull-right">
-        <?= Html::a(AmosComuni::t('amoscomuni', 'Chiudi'), Url::previous(), ['class' => 'btn btn-secondary']); ?>    </div>
+        <?= Html::a(AmosComuni::t('amoscomuni', 'Chiudi'), \yii\helpers\Url::previous(), ['class' => 'btn btn-secondary']); ?>    </div>
 
 </div>

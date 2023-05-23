@@ -25,10 +25,30 @@ class AmosComuni extends AmosModule {
      * @inheritdoc
      */
     public $controllerNamespace = 'open20\amos\comuni\controllers';
+    
+    /**
+     * 
+     * @var type
+     */
     public $newFileMode = 0666;
+    
+    /**
+     * 
+     * @var type
+     */
     public $newDirMode = 0777;
+    
+    /**
+     * 
+     * @var type
+     */
     public $name = 'comuni';
 
+    /**
+     * 
+     */
+    public $selectOnlyTheseNations = [];
+    
     /**
      * @inheritdoc
      */
@@ -39,6 +59,10 @@ class AmosComuni extends AmosModule {
         \Yii::configure($this, require(__DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php'));
     }
 
+    /**
+     * 
+     * @return type
+     */
     protected function getDefaultModels() {
         return [];
     }
@@ -51,15 +75,23 @@ class AmosComuni extends AmosModule {
         return 'comuni';
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function getWidgetGraphics() {
-        return NULL;
+        return null;
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function getWidgetIcons() {
         return [
-            WidgetIconAmmComuni::className(),
-            WidgetIconComuni::className(),
-            WidgetIconProvince::className(),
+            WidgetIconAmmComuni::class,
+            WidgetIconComuni::class,
+            WidgetIconProvince::class,
         ];
     }
 
