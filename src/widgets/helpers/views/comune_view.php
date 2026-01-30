@@ -57,6 +57,7 @@ $style = isset($nazioneConfig['options']['style']) ? $nazioneConfig['options']['
                 'placeholder' => AmosComuni::t('amoscomuni', '#select_commune_placeholder'),
                 'url' => Url::to(['/comuni/default/comuni-by-provincia?soppresso=0']),
                 'params' => [$id],
+                'ajaxSettings' => ['type' => 'get'],
             ], !empty($comuneConfig['pluginOptions']) ? $comuneConfig['pluginOptions'] : []
         ),
         'pluginEvents' => [

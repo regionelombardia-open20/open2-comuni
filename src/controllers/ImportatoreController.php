@@ -289,7 +289,7 @@ class ImportatoreController extends Controller {
      */
     public function actionImportComuni() {
         ini_set("memory_limit", "2G");
-
+        ini_set('max_execution_time', 400);
         $errors = [];
 
         // Recupero il contenuto del xls comuni

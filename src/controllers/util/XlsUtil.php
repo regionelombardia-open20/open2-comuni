@@ -2,9 +2,12 @@
 
 namespace open20\amos\comuni\controllers\util;
 
-use PHPExcel_IOFactory;
-use PHPExcel_Calculation;
+
 use yii\base\Exception;
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class XlsUtil {
 
@@ -15,12 +18,12 @@ class XlsUtil {
      * carica il file inviato in input e genera l'oggetto PHPExcel
      *
      * @param: file input: path completo
-     * @return boolean
+     *
      */
     public static function createReader($readerType = null) {
         // $this->objPHPExcelLocation = $inputFileName;
         try {
-            return PHPExcel_IOFactory::createReader($readerType);
+            return IOFactory::createReader($readerType);
         } catch (Exception $ex) {
             pr($ex->getMessage(), 'Errore nel load del file Excel');
         }
@@ -38,7 +41,7 @@ class XlsUtil {
         try {
             //libxml_use_internal_errors(true);
 
-            $reader = PHPExcel_IOFactory::createReaderForFile($inputFileName);
+            $reader = IOFactory::createReaderForFile($inputFileName);
             //$this->phpExcelReader = $this->createReader($readerType);
             if (preg_match('/csv/i', get_class($reader))) {
                 $reader->setDelimiter($delimiter);
@@ -99,7 +102,7 @@ class XlsUtil {
     public static function save($objPHPExcel, $objPHPExcelLocation) {
         if (empty($objPHPExcelLocation))
             throw new Exception("Error Processing Request", 1);
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter = IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save($objPHPExcelLocation);
         return true;
     }
