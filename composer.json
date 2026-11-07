@@ -1,5 +1,6 @@
 {
     "name": "open20/amos-comuni",
+    "license": "GPL-3.0-or-later",
     "description": "Dati ISTAT - Comuni, province, regioni, nazioni, continenti aggiornati a LUGLIO 2016",
     "keywords": ["amos", "yii2", "comuni"],
     "homepage": "http://www.open20.it/",
