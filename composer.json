@@ -5,7 +5,6 @@
     "keywords": ["amos", "yii2", "comuni"],
     "homepage": "http://www.open20.it/",
     "type": "library",
-    "proscription": "",
     "support": {
         "source": "https://github.com/open20/amos-comuni"
     },
